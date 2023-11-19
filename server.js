@@ -3,7 +3,7 @@ const dotenv = require('dotenv').config()
 const errorHandler = require('./middleware/errorHandler')
 const connectDb = require('./config/dbConnection')
 const cors = require('cors')
-const bodyParser = require('body-parser')
+//const bodyParser = require('body-parser')
 
 connectDb()
 const app = express()
