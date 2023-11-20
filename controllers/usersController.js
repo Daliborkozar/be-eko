@@ -6,7 +6,7 @@ const userController = {};
 
 userController.register = async (req, res) => {
   try {
-    const { username, password, role } = req.body;
+    const { username, password, role, organisation } = req.body;
 
     // Check if the user already exists
     const existingUser = await User.findOne({ username });
@@ -18,8 +18,14 @@ userController.register = async (req, res) => {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create a new user with the specified role
-    const newUser = new User({ username, password: hashedPassword, role });
+    // Create a new user with the specified role and organisation if provided
+    const newUser = new User({
+      username,
+      password: hashedPassword,
+      role,
+      organisation: organisation || undefined, // Set to undefined if not provided
+    });
+
     await newUser.save();
 
     console.log(`Registration successful. User ${username} registered with role ${role}.`);

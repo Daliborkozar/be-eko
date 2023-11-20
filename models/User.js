@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
     enum: ['superadmin', 'admin', 'user'],
     default: 'user',
   },
+  organisation: {
+    type: String,
+    unique: true,
+  },
 });
 
 const User = mongoose.model('User', userSchema);
