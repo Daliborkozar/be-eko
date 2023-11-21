@@ -40,6 +40,8 @@ userController.login = async (req, res) => {
   try {
     const { username, password } = req.body;
 
+    console.log(username)
+    console.log(password)
     // Find the user by username
     const user = await User.findOne({ username });
     if (!user) {
